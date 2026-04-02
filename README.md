@@ -1,10 +1,7 @@
 # Report Outline
 
-## Suggested Title
+## Title
 Neural ODE for Atmospheric Forecasting: Learning Dynamics by Solving Ordinary Differential Equations
-
-## Subtitle Option
-Baseline Neural ODE, Kalman-Enhanced Forecasting, and Bayesian Uncertainty Modeling on Lorenz-96
 
 ## 1. Introduction
 
