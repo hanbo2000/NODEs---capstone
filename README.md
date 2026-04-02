@@ -1,6 +1,6 @@
 # Report Outline
 
-## Suggested Title
+## Title
 Neural ODE for Atmospheric Forecasting: Learning Dynamics by Solving Ordinary Differential Equations
 
 ## 1. Introduction
