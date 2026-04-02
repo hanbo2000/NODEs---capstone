@@ -78,7 +78,7 @@ Neural ODE for Atmospheric Forecasting: Learning Dynamics by Solving Ordinary Di
 - Caption example: `Training workflow of the Neural ODE forecasting model.`
 
 ## 4. Extensions Beyond the Baseline
-
+- Base on NN, adding KF, and noise.
 ### Extension I: KF+NN
 - The first extension combines the neural dynamics model with Kalman-style filtering.
 - The intuition is that filtering can reduce the effect of noisy observations by updating the state estimate before further rollout.
