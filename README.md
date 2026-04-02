@@ -88,19 +88,18 @@ Neural ODE for Atmospheric Forecasting: Learning Dynamics by Solving Ordinary Di
 - Instead of producing only a single deterministic trajectory, the model also provides predictive uncertainty.
 - This is useful because chaotic atmospheric systems become increasingly uncertain over longer horizons.
 
-### Why These Extensions Matter
+
 - The baseline Neural ODE focuses on learning dynamics.
 - KF+NN focuses on state correction under noisy measurements.
 - Bayesian+NN focuses on confidence estimation and probabilistic forecasting.
-- Together, they show how the same Neural ODE forecasting framework can be enhanced in different directions.
 
 **Suggested comparison table**
 
 | Method | Main idea | Main advantage |
 |---|---|---|
 | Neural ODE | Learn continuous-time dynamics | Physics-consistent forecasting framework |
-| KF+NN | Add filtering to state updates | Better robustness to noisy observations |
-| Bayesian+NN | Model predictive uncertainty | More reliable and interpretable forecasts |
+| KF+NN | Add filtering to state updates |  |
+| Bayesian+NN | Model predictive uncertainty |  |
 
 ## 5. Experimental Design
 
