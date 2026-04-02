@@ -60,6 +60,7 @@ Neural ODE for Atmospheric Forecasting: Learning Dynamics by Solving Ordinary Di
 - The model learns a vector field of the form `dy/dt = f_theta(y)`.
 - Here, `f_theta` is represented by a multilayer perceptron.
 - Once the vector field is learned, forecasting is performed by numerically solving the ODE forward in time.
+- Window size.
 
 ### Why Neural ODE
 - Neural ODE provides a continuous-time representation rather than a purely step-to-step mapping.
