@@ -1,6 +1,6 @@
 # Report Outline
 
-## Title
+## Suggested Title
 Neural ODE for Atmospheric Forecasting: Learning Dynamics by Solving Ordinary Differential Equations
 
 ## 1. Introduction
@@ -19,6 +19,10 @@ Neural ODE for Atmospheric Forecasting: Learning Dynamics by Solving Ordinary Di
 - Can a Neural ODE learn dynamics well enough to support stable autonomous forecasting?
 - Does adding Kalman-style filtering improve robustness when observations are noisy?
 - Does Bayesian modeling provide useful predictive uncertainty in addition to point accuracy?
+
+**Suggested visual**
+- A simple concept diagram showing: `continuous-time dynamics -> learned derivative -> ODE solver -> forecast`.
+- Caption example: `Conceptual view of atmospheric forecasting with Neural ODE.`
 
 ## 2. Problem Setup
 
@@ -42,6 +46,14 @@ Neural ODE for Atmospheric Forecasting: Learning Dynamics by Solving Ordinary Di
 - Total RMSE to summarize overall forecasting quality.
 - For Bayesian models, uncertainty quality can also be evaluated through interval coverage or calibration.
 
+**Suggested table**
+
+| Metric | Purpose |
+|---|---|
+| Component-wise RMSE | Measures error for each state variable |
+| Total RMSE | Summarizes overall forecast accuracy |
+| Coverage / Calibration | Evaluates uncertainty quality for Bayesian forecasting |
+
 ## 3. Core Method: Neural ODE
 
 ### Neural ODE Formulation
@@ -58,6 +70,11 @@ Neural ODE for Atmospheric Forecasting: Learning Dynamics by Solving Ordinary Di
 - Both training and inference use RK4, ensuring consistency between learning and prediction.
 - Training uses multi-step free-rollout loss so the model learns to remain stable during autonomous evolution.
 - This is important because forecasting quality depends not only on one-step accuracy, but also on how errors accumulate over time.
+
+**Suggested visual**
+- A training pipeline figure:
+  `input state -> neural vector field f_theta(y) -> RK4 rollout -> predicted trajectory -> multi-step loss`.
+- Caption example: `Training workflow of the Neural ODE forecasting model.`
 
 ## 4. Extensions Beyond the Baseline
 
@@ -77,6 +94,14 @@ Neural ODE for Atmospheric Forecasting: Learning Dynamics by Solving Ordinary Di
 - Bayesian+NN focuses on confidence estimation and probabilistic forecasting.
 - Together, they show how the same Neural ODE forecasting framework can be enhanced in different directions.
 
+**Suggested comparison table**
+
+| Method | Main idea | Main advantage |
+|---|---|---|
+| Neural ODE | Learn continuous-time dynamics | Physics-consistent forecasting framework |
+| KF+NN | Add filtering to state updates | Better robustness to noisy observations |
+| Bayesian+NN | Model predictive uncertainty | More reliable and interpretable forecasts |
+
 ## 5. Experimental Design
 
 ### Training Strategy
@@ -94,6 +119,10 @@ Neural ODE for Atmospheric Forecasting: Learning Dynamics by Solving Ordinary Di
 - The baseline Neural ODE serves as the core reference.
 - KF+NN and Bayesian+NN are evaluated as improvements on top of the same forecasting task.
 
+**Suggested visual**
+- A small experiment setup chart showing:
+  `same data split + same initial condition + same noise level -> compare three methods`.
+
 ## 6. Results and Discussion
 
 ### Main Result
@@ -110,6 +139,11 @@ Neural ODE for Atmospheric Forecasting: Learning Dynamics by Solving Ordinary Di
 - If Bayesian+NN provides useful uncertainty bands, this shows the value of probabilistic forecasting in chaotic systems.
 - Even when RMSE is similar, uncertainty calibration may still be a major advantage.
 
+**Suggested figures**
+- A bar chart of `Total RMSE` for `Neural ODE`, `KF+NN`, and `Bayesian+NN`.
+- A line chart of `RMSE vs time` for the three methods.
+- A trajectory panel comparing true and predicted states for selected variables.
+
 ## 7. Recommended Figures
 
 ### Figure 1. Overall framework
@@ -121,22 +155,50 @@ Add two side branches from the Neural ODE block:
 - `KF+NN`: filtering-based state update
 - `Bayesian+NN`: uncertainty-aware forecasting
 
+**Simple layout**
+
+```text
+Observed Data -> Preprocessing -> Neural ODE -> Learned Dynamics -> RK4 Solver -> Forecast
+                                      |                        |
+                                      |                        +-> Forecast trajectories
+                                      +-> KF+NN
+                                      +-> Bayesian+NN
+```
+
 ### Figure 2. Forecast trajectories
 - Plot true trajectory and predicted trajectory for `x1`, `x5`, and `x10`.
 - Mark the train/forecast split at `t = 20s`.
 - Show all three methods in the same visual style for easy comparison.
 
+**Layout suggestion**
+- Three subplots in one row: `x1`, `x5`, `x10`.
+- Use black for truth, blue for Neural ODE, green for KF+NN, red for Bayesian+NN.
+
 ### Figure 3. RMSE over time
 - Plot forecasting error as a function of time.
 - This figure clearly shows how error accumulates during autonomous rollout.
+
+**Layout suggestion**
+- X-axis: forecast time.
+- Y-axis: RMSE.
+- One line for each method.
 
 ### Figure 4. Uncertainty band
 - For Bayesian+NN, plot predictive mean with confidence or credible intervals.
 - Overlay the true trajectory to show whether uncertainty expands in difficult regions.
 
+**Layout suggestion**
+- Truth: black solid line.
+- Predictive mean: red dashed line.
+- Uncertainty band: light red shaded region.
+
 ### Figure 5. Quantitative summary table
 - Present total RMSE and mean component-wise RMSE for all methods.
 - This should be the main comparison table in the report.
+
+**Optional extra figure**
+- A grouped bar chart for component-wise RMSE across `x1` to `x10`.
+- This makes it easier to see which method performs best on each state variable.
 
 ## 8. Suggested Results Table
 
